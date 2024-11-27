@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
@@ -16,7 +15,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "jsxImportSource": "react",
     "incremental": true,
     "plugins": [
       {
@@ -27,7 +25,8 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
