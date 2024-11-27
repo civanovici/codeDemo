@@ -19,6 +19,7 @@ const navItems = [
   { label: 'Products', icon: Package, href: '/product' },
   { label: 'Messages', icon: MessageSquare, href: '/messages' },
   { label: 'Transactions', icon: Receipt, href: '/transactions' },
+  { label: 'Demo Table', icon: LayoutDashboard, href: '/demo-table' },
 ]
 
 const Sidebar: FC = () => {
