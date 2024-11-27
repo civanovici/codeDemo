@@ -1,3 +1,7 @@
+export interface PackError {
+  message: string
+}
+
 export interface PackData {
   packType: string
   initialQuantity: number
@@ -8,6 +12,7 @@ export interface PackData {
   shortWindow: number
   longWindow: number
   includeInOrders: boolean
+  errors?: PackError[]
 }
 
 export const mockPackData: PackData[] = [
@@ -21,6 +26,10 @@ export const mockPackData: PackData[] = [
     shortWindow: 7,
     longWindow: 30,
     includeInOrders: true,
+    errors: [
+      { message: 'Initial quantity is below recommended threshold' },
+      { message: 'Buffer range might be insufficient for demand' }
+    ]
   },
   {
     packType: 'B.02',
@@ -31,7 +40,7 @@ export const mockPackData: PackData[] = [
     maxBuffer: 60,
     shortWindow: 5,
     longWindow: 25,
-    includeInOrders: true,
+    includeInOrders: true
   },
   {
     packType: 'C.03',
@@ -43,6 +52,9 @@ export const mockPackData: PackData[] = [
     shortWindow: 6,
     longWindow: 28,
     includeInOrders: false,
+    errors: [
+      { message: 'Order quantity ratio is suboptimal' }
+    ]
   },
   {
     packType: 'D.04',
@@ -53,7 +65,7 @@ export const mockPackData: PackData[] = [
     maxBuffer: 70,
     shortWindow: 8,
     longWindow: 35,
-    includeInOrders: true,
+    includeInOrders: true
   },
   {
     packType: 'E.05',
@@ -65,6 +77,10 @@ export const mockPackData: PackData[] = [
     shortWindow: 6,
     longWindow: 28,
     includeInOrders: true,
+    errors: [
+      { message: 'Short window period conflicts with order cycle' },
+      { message: 'Max buffer might cause overflow in storage' }
+    ]
   },
   {
     packType: 'F.06',
@@ -75,7 +91,7 @@ export const mockPackData: PackData[] = [
     maxBuffer: 45,
     shortWindow: 5,
     longWindow: 25,
-    includeInOrders: false,
+    includeInOrders: false
   },
   {
     packType: 'G.07',
@@ -86,7 +102,7 @@ export const mockPackData: PackData[] = [
     maxBuffer: 65,
     shortWindow: 7,
     longWindow: 32,
-    includeInOrders: true,
+    includeInOrders: true
   },
   {
     packType: 'H.08',
@@ -98,6 +114,9 @@ export const mockPackData: PackData[] = [
     shortWindow: 6,
     longWindow: 30,
     includeInOrders: true,
+    errors: [
+      { message: 'Long window exceeds recommended duration' }
+    ]
   },
   {
     packType: 'I.09',
@@ -108,7 +127,7 @@ export const mockPackData: PackData[] = [
     maxBuffer: 52,
     shortWindow: 5,
     longWindow: 26,
-    includeInOrders: true,
+    includeInOrders: true
   },
   {
     packType: 'J.10',
@@ -119,6 +138,6 @@ export const mockPackData: PackData[] = [
     maxBuffer: 62,
     shortWindow: 7,
     longWindow: 33,
-    includeInOrders: false,
+    includeInOrders: false
   },
 ] 
